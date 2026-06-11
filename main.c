@@ -3,16 +3,27 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mamendes <mamendes@student.42.fr>          +#+  +:+       +#+        */
+/*   By: andmigue <andmigue@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/29 16:00:19 by andmigue          #+#    #+#             */
-/*   Updated: 2026/06/07 01:17:04 by mamendes         ###   ########.fr       */
+/*   Updated: 2026/06/11 17:47:23 by andmigue         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdlib.h>
 #include "push_swap.h"
 
+
+int is_sorted(t_stack *stack)
+{
+    while(stack && stack->next)
+    {
+        if(stack->val > stack->next->val)
+            return (0);
+        stack = stack->next;
+    }
+    return (1);
+}
 int	main(int argc, char **argv)
 {
     t_stack	*a;
@@ -20,30 +31,33 @@ int	main(int argc, char **argv)
     t_flags	flags;
     int		start;
     int		err;
+    int i;
 
-    if (argc == 1)
-        return (0);
-    start = parse_flags(argc, argv, &flags);
-    if (start == -1)
+    if (argc >= 2)
     {
-        write(2, "Error\n", 6);
-        return (1);
-    }
-    err = 0;
-    a = parse_args(argc, argv, start, &err);
-    if (err)
-    {
-        write(2, "Error\n", 6);
-        return (1);
-    }
-    if (!a || is_sorted(a))
-    {
-        free_stack(&a);
-        return (0);
+        i = 0;
+        start = set_strategy(&flags, argv[1]);
+        if (start == -1)
+        {
+            write(2, "Error1\n", 6);
+            return (1);
+        }
+        parse_flags(argc, &argv[i], &flags);
+        err = 0;
+        a = parse_args(argc, &argv[i], start, &err);
+        if (err)
+        {
+            write(2, "Error2\n", 6);
+            return (1);
+        }
+        if (!a || is_sorted(a))
+        {
+            // free_stack(&a);
+            return (0);
+        }
     }
     b = NULL;
-    //run algorithm based on flags.strategy
-    free_stack(&a);
-    free_stack(&b);
+    // free_stack(&a);
+    // free_stack(&b);
     return (0);
 }

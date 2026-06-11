@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parser.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mamendes <mamendes@student.42.fr>          +#+  +:+       +#+        */
+/*   By: andmigue <andmigue@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/06/06 17:59:42 by mamendes          #+#    #+#             */
-/*   Updated: 2026/06/07 01:16:29 by mamendes         ###   ########.fr       */
+/*   Created: 2026/06/11 17:53:11 by andmigue          #+#    #+#             */
+/*   Updated: 2026/06/11 17:53:12 by andmigue         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -169,4 +169,3 @@ void *pushswap_parsing(char *str, char **av, int ac)
 	else
 		exit(EXIT_SUCCESS);
 }
-

@@ -12,34 +12,32 @@
 
 #include "push_swap.h"
 
-static void	push(t_stack *src, t_stack *dest)
+static void swap(t_stack **stack)
 {
-	t_node	*temp;
-
-	if (!src || src->size == 0)
-		return ;
-	temp = src->top;
-	src->top = temp->next;
-	temp->next = dest->top;
-	dest->top = temp;
-	src->size--;
-	dest->size++;
+    int tmp;
+    if (!*stack || !(*stack)->next)
+        return ;
+    tmp = (*stack)->val;
+    (*stack)->val = (*stack)->next->val;
+    (*stack)->next->val = tmp;
 }
 
-void	pa(t_stacks *data, int print, t_bench_stats *bench_stats)
+void    sa(t_stack **a)
 {
-	push(data->b, data->a);
-	bench_stats->pa++;
-	bench_stats->total_ops++;
-	if (print)
-		write (1, "pa\n", 3);
+    swap(a);
+    write(1, "sa\n", 3);
 }
 
-void	pb(t_stacks *data, int print, t_bench_stats *bench_stats)
+void    sb(t_stack **b)
 {
-	push(data->a, data->b);
-	bench_stats->pb++;
-	bench_stats->total_ops++;
-	if (print)
-		write (1, "pb\n", 3);
+    swap(b);
+    write(1, "sb\n", 3);
 }
+
+void    ss(t_stack **a, t_stack **b)
+{
+    swap(a);
+    swap(b);
+    write(1, "ss\n", 3);
+}
+

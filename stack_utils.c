@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   stack_utils.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mamendes <mamendes@student.42.fr>          +#+  +:+       +#+        */
+/*   By: andmigue <andmigue@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/06 20:56:51 by mamendes          #+#    #+#             */
-/*   Updated: 2026/06/06 20:59:38 by mamendes         ###   ########.fr       */
+/*   Updated: 2026/06/12 13:53:52 by andmigue         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,4 +55,17 @@ void	free_tokens(char **tokens)
     while (tokens[i])
         free(tokens[i++]);
     free(tokens);
+}
+
+int  stack_size(t_stack *a)
+{
+	int i;
+
+	i = 0;
+	while (a)
+	{
+		i++;
+		a = a->next;
+	}
+	return (i);
 }

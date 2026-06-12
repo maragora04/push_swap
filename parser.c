@@ -6,7 +6,7 @@
 /*   By: andmigue <andmigue@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/11 17:53:11 by andmigue          #+#    #+#             */
-/*   Updated: 2026/06/11 17:53:12 by andmigue         ###   ########.fr       */
+/*   Updated: 2026/06/12 10:38:17 by andmigue         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -162,7 +162,7 @@ void *pushswap_parsing(char *str, char **av, int ac)
 	{
 		if (!is_valid_number(av[i]))
 		{
-    		ft_printf("Error\n", 2);
+    		printf("Error\n", 2);
     		exit(EXIT_FAILURE);
 		}
 	}

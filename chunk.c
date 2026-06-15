@@ -1,42 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   bubble_sort.c                                      :+:      :+:    :+:   */
+/*   chunk.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: andmigue <andmigue@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/06/12 10:40:42 by andmigue          #+#    #+#             */
-/*   Updated: 2026/06/15 16:44:22 by andmigue         ###   ########.fr       */
+/*   Created: 2026/06/15 18:45:12 by andmigue          #+#    #+#             */
+/*   Updated: 2026/06/15 18:45:13 by andmigue         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
-
-void    bubble_sort(t_stack **a, t_stack **b)
-{
-	int size;
-	int i;
-	int swapped;
-
-	(void)b;
-	size = stack_size(*a);
-	while (1)
-	{
-		i = 0;
-		swapped = 0;
-		while (i++ < size - 1)
-		{
-			if ((*a)->val > (*a)->next->val)
-			{
-				sa(a);
-				swapped = 1;
-			}
-			ra(a);
-		}
-		while (--i > 0)
-			rra(a);
-		if (!swapped)
-			break ;
-		size--;
-	}
-}

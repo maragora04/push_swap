@@ -6,7 +6,7 @@
 /*   By: andmigue <andmigue@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/29 16:00:19 by andmigue          #+#    #+#             */
-/*   Updated: 2026/06/12 14:37:22 by andmigue         ###   ########.fr       */
+/*   Updated: 2026/06/15 19:27:00 by andmigue         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,10 +83,15 @@ int main(int argc, char **argv)
 		sa(&a);
 	else if (size >= 3)
 	{
-		normalize(a, size);
-		radix_sort(&a, &b);
+	//	normalize(a, size);
+		bubble_sort(&a, &b);
 	}
     free_stack(&a);
     free_stack(&b);
     return (0);
 }
+
+//parser - struct!! - ops(importante separar os writes das operacoes!!!!!!) - 
+//algorithms - bench - (opcional)libft
+//ver guidelines antes de submeter - PDF
+//live code preparado

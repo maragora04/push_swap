@@ -6,17 +6,17 @@
 /*   By: andmigue <andmigue@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/12 10:40:42 by andmigue          #+#    #+#             */
-/*   Updated: 2026/06/15 16:44:22 by andmigue         ###   ########.fr       */
+/*   Updated: 2026/06/19 18:10:18 by andmigue         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void    bubble_sort(t_stack **a, t_stack **b)
+void    bubble_sort(t_stack **a, t_stack **b, t_flags *flags)
 {
-	int size;
-	int i;
-	int swapped;
+	int	size;
+	int	i;
+	int	swapped;
 
 	(void)b;
 	size = stack_size(*a);
@@ -27,16 +27,14 @@ void    bubble_sort(t_stack **a, t_stack **b)
 		while (i++ < size - 1)
 		{
 			if ((*a)->val > (*a)->next->val)
-			{
-				sa(a);
-				swapped = 1;
-			}
-			ra(a);
+				{ sa(a, flags); swapped = 1; }
+			ra(a, flags);
 		}
 		while (--i > 0)
-			rra(a);
+			rra(a, flags);
 		if (!swapped)
 			break ;
 		size--;
 	}
 }
+

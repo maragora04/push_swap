@@ -6,7 +6,7 @@
 #    By: andmigue <andmigue@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2026/06/11 17:49:02 by andmigue          #+#    #+#              #
-#    Updated: 2026/06/12 13:57:38 by andmigue         ###   ########.fr        #
+#    Updated: 2026/06/16 16:26:57 by andmigue         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,7 +16,7 @@ RM = rm -f
 
 SRC = ft_split.c more_utils.c operations.c parser.c stack_utils.c \
       bubble_sort.c ft_atoi_safe.c main.c operations_rotate.c \
-	  operations_rrotate.c operations_push.c radix.c \
+	  operations_rrotate.c operations_push.c radix.c chunk.c\
 
 OBJS = $(SRC:.c=.o)
 

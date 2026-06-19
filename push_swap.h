@@ -6,7 +6,7 @@
 /*   By: andmigue <andmigue@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/06 20:57:10 by mamendes          #+#    #+#             */
-/*   Updated: 2026/06/12 13:57:20 by andmigue         ###   ########.fr       */
+/*   Updated: 2026/06/19 19:44:46 by andmigue         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,10 +21,29 @@
 # include <stdio.h>
 # include <unistd.h>
 
+enum e_op
+{
+    OP_SA,
+    OP_SB,
+    OP_SS,
+    OP_PA,
+    OP_PB,
+    OP_RA,
+    OP_RB,
+    OP_RR,
+    OP_RRA,
+    OP_RRB,
+    OP_RRR,
+    OP_COUNT  // total number of ops, used for array size
+};
+
+
 typedef struct s_flags
 {
-	int strategy;
-	int bench;
+    int strategy;
+    int bench;
+    int op_count[OP_COUNT];
+    int total_ops;
 }   t_flags;
 
 typedef struct s_stack
@@ -32,6 +51,8 @@ typedef struct s_stack
 	int             val;
 	struct s_stack  *next;
 }   t_stack;
+
+
 
 int             ft_strcmp(char *s1, char *s2);
 char	**ft_split(char const *s, char c);
@@ -53,26 +74,29 @@ void	free_stack(t_stack **stack);
 void	free_tokens(char **tokens);
 int  stack_size(t_stack *a);
 
-void    sa(t_stack **a);
-void    sb(t_stack **b);
-void    ss(t_stack **a, t_stack **b);
+void    sa(t_stack **a, t_flags *flags);
+void    sb(t_stack **b, t_flags *flags);
+void    ss(t_stack **a, t_stack **b, t_flags *flags);
+void    pa(t_stack **a, t_stack **b, t_flags *flags);
+void    pb(t_stack **a, t_stack **b, t_flags *flags);
+void    ra(t_stack **a, t_flags *flags);
+void    rb(t_stack **b, t_flags *flags);
+void    rr(t_stack **a, t_stack **b, t_flags *flags);
+void    rra(t_stack **a, t_flags *flags);
+void    rrb(t_stack **b, t_flags *flags);
+void    rrr(t_stack **a, t_stack **b, t_flags *flags);
+void    emit_op(t_flags *flags, const char *op, int len, int op_index);
 
-void    pa(t_stack **a, t_stack **b);
-void    pb(t_stack **a, t_stack **b);
+void    sort_three(t_stack **a, t_flags *flags);
 
-void    rr(t_stack **a, t_stack **b);
-void    rb(t_stack **b);
-void    ra(t_stack **a);
+void    bubble_sort(t_stack **a, t_stack **b, t_flags *flags);
 
-void    rra(t_stack **a);
-void    rrb(t_stack **b);
-void    rrr(t_stack **a, t_stack **b);
-
-void    bubble_sort(t_stack **a, t_stack **b);
-
-void    radix_sort(t_stack **a, t_stack **b);
+void    radix_sort(t_stack **a, t_stack **b, t_flags *flags);
 int     get_max_bits(int size);
 void    normalize(t_stack *a, int size);
 
+void    chunk_sort(t_stack **a, t_stack **b, t_flags *flags);
+
+void    sort(t_stack **a, t_stack **b, t_flags *flags);
 
 #endif

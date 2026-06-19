@@ -6,7 +6,7 @@
 /*   By: andmigue <andmigue@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/12 11:48:35 by andmigue          #+#    #+#             */
-/*   Updated: 2026/06/12 11:49:18 by andmigue         ###   ########.fr       */
+/*   Updated: 2026/06/19 17:45:36 by andmigue         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,17 +31,21 @@ static void reverse_rotate(t_stack **stack)
     *stack = tail;
 }
 
-void    rra(t_stack **a) 
+void    rra(t_stack **a, t_flags *flags)
 {
-	reverse_rotate(a); write(1, "rra\n", 4);
+    reverse_rotate(a);
+    emit_op(flags, "rra\n", 4, OP_RRA);
 }
 
-void    rrb(t_stack **b) 
+void    rrb(t_stack **b, t_flags *flags)
 {
-	reverse_rotate(b); write(1, "rrb\n", 4);
+    reverse_rotate(b);
+    emit_op(flags, "rrb\n", 4, OP_RRB);
 }
 
-void    rrr(t_stack **a, t_stack **b) 
+void    rrr(t_stack **a, t_stack **b, t_flags *flags)
 {
-	reverse_rotate(a); reverse_rotate(b); write(1, "rrr\n", 4);
+    reverse_rotate(a);
+    reverse_rotate(b);
+    emit_op(flags, "rrr\n", 4, OP_RRR);
 }

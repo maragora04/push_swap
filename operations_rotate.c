@@ -6,70 +6,44 @@
 /*   By: andmigue <andmigue@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/12 11:41:49 by andmigue          #+#    #+#             */
-/*   Updated: 2026/06/12 11:42:02 by andmigue         ###   ########.fr       */
+/*   Updated: 2026/06/19 17:45:24 by andmigue         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void    ra(t_stack **a)
+static void rotate(t_stack **stack)
 {
     t_stack *top;
     t_stack *tail;
 
-    if (!*a || !(*a)->next)
+    if (!*stack || !(*stack)->next)
         return ;
-    top = *a;
-    *a = (*a)->next;
+    top = *stack;
+    *stack = (*stack)->next;
     top->next = NULL;
-    tail = *a;
+    tail = *stack;
     while (tail->next)
         tail = tail->next;
     tail->next = top;
-    write(1, "ra\n", 3);
 }
 
-void    rb(t_stack **b)
-{
-    t_stack *top;
-    t_stack *tail;
 
-    if (!*b || !(*b)->next)
-        return ;
-    top = *b;
-    *b = (*b)->next;
-    top->next = NULL;
-    tail = *b;
-    while (tail->next)
-        tail = tail->next;
-    tail->next = top;
-    write(1, "rb\n", 3);
+void    ra(t_stack **a, t_flags *flags)
+{
+    rotate(a);
+    emit_op(flags, "ra\n", 3, OP_RA);
 }
 
-void    rr(t_stack **a, t_stack **b)
+void    rb(t_stack **b, t_flags *flags)
 {
-    t_stack *top;
-    t_stack *tail;
+    rotate(b);
+    emit_op(flags, "rb\n", 3, OP_RB);
+}
 
-    if (*a && (*a)->next)
-    {
-        top = *a;
-        *a = (*a)->next;
-        top->next = NULL;
-        tail = *a;
-        while (tail->next)
-            tail = tail->next;
-        tail->next = top;
-    }
-    if (*b && (*b)->next)
-    {
-        top = *b;
-        *b = (*b)->next;
-        top->next = NULL;
-        tail = *b;
-        while (tail->next)
-            tail = tail->next;
-        tail->next = top;
-    }
-    write(1, "rr\n", 3);
+void    rr(t_stack **a, t_stack **b, t_flags *flags)
+{
+    rotate(a);
+    rotate(b);
+    emit_op(flags, "rr\n", 3, OP_RR);
 }

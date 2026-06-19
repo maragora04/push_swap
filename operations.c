@@ -22,22 +22,21 @@ static void swap(t_stack **stack)
     (*stack)->next->val = tmp;
 }
 
-void    sa(t_stack **a)
+void    sa(t_stack **a, t_flags *flags)
 {
     swap(a);
-    write(1, "sa\n", 3);
+    emit_op(flags, "sa\n", 3, OP_SA);
 }
-
-void    sb(t_stack **b)
+void    sb(t_stack **b, t_flags *flags)
 {
     swap(b);
-    write(1, "sb\n", 3);
+    emit_op(flags, "sb\n", 3, OP_SB);
 }
 
-void    ss(t_stack **a, t_stack **b)
+void    ss(t_stack **a, t_stack **b, t_flags *flags)
 {
     swap(a);
     swap(b);
-    write(1, "ss\n", 3);
+	emit_op(flags, "ss\n", 3, OP_SS);
 }
 

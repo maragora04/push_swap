@@ -6,7 +6,7 @@
 /*   By: andmigue <andmigue@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/12 13:54:32 by andmigue          #+#    #+#             */
-/*   Updated: 2026/06/15 16:47:43 by andmigue         ###   ########.fr       */
+/*   Updated: 2026/06/19 18:11:47 by andmigue         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,7 +58,7 @@ int     get_max_bits(int size)
     return (bits);
 }
 
-void    radix_sort(t_stack **a, t_stack **b)
+void    radix_sort(t_stack **a, t_stack **b, t_flags *flags)
 {
     int size;
     int max_bits;
@@ -74,13 +74,13 @@ void    radix_sort(t_stack **a, t_stack **b)
         while (i < size)
         {
             if (((*a)->val >> bit) & 1)
-                ra(a);          // bit is 1 → stays in a
+                ra(a, flags);          // bit is 1 → stays in a
             else
-                pb(a, b);       // bit is 0 → goes to b
+                pb(a, b, flags);       // bit is 0 → goes to b
             i++;
         }
         while (*b)
-            pa(a, b);           // push everything back
+            pa(a, b, flags);           // push everything back
         bit++;
     }
 }

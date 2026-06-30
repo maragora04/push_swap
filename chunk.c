@@ -6,11 +6,12 @@
 /*   By: andmigue <andmigue@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/15 18:45:12 by andmigue          #+#    #+#             */
-/*   Updated: 2026/06/19 18:15:12 by andmigue         ###   ########.fr       */
+/*   Updated: 2026/06/30 17:15:24 by andmigue         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
+#include "ft_printf.h"
 
 static int  sqrt_chunk(int size)
 {

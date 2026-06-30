@@ -3,14 +3,15 @@
 /*                                                        :::      ::::::::   */
 /*   ft_atoi_safe.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mamendes <mamendes@student.42.fr>          +#+  +:+       +#+        */
+/*   By: andmigue <andmigue@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/06 20:58:19 by mamendes          #+#    #+#             */
-/*   Updated: 2026/06/06 20:59:19 by mamendes         ###   ########.fr       */
+/*   Updated: 2026/06/30 17:15:32 by andmigue         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
+#include "ft_printf.h"
 
 int	ft_atoi_safe(char *str, int *err)
 {

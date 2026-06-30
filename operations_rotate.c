@@ -6,11 +6,12 @@
 /*   By: andmigue <andmigue@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/12 11:41:49 by andmigue          #+#    #+#             */
-/*   Updated: 2026/06/19 17:45:24 by andmigue         ###   ########.fr       */
+/*   Updated: 2026/06/30 17:15:59 by andmigue         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
+#include "ft_printf.h"
 
 static void rotate(t_stack **stack)
 {

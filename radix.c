@@ -6,18 +6,43 @@
 /*   By: andmigue <andmigue@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/12 13:54:32 by andmigue          #+#    #+#             */
-/*   Updated: 2026/06/19 18:11:47 by andmigue         ###   ########.fr       */
+/*   Updated: 2026/06/30 17:16:17 by andmigue         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
+#include "ft_printf.h"
+
+static int  calc_rank(t_stack *a, t_stack *cur)
+{
+    int rank;
+
+    rank = 0;
+    while (a)
+    {
+        if (a->val < cur->val)
+            rank++;
+        a = a->next;
+    }
+    return (rank);
+}
+
+static void assign_ranks(t_stack *a, int *ranks, int size)
+{
+    int i;
+
+    i = 0;
+    while (a && i < size)
+    {
+        a->val = ranks[i++];
+        a = a->next;
+    }
+}
 
 void    normalize(t_stack *a, int size)
 {
     int     *ranks;
     t_stack *cur;
-    t_stack *runner;
-    int     rank;
     int     i;
 
     ranks = malloc(sizeof(int) * size);
@@ -27,24 +52,10 @@ void    normalize(t_stack *a, int size)
     i = 0;
     while (cur)
     {
-        rank = 0;
-        runner = a;
-        while (runner)
-        {
-            if (runner->val < cur->val)
-                rank++;
-            runner = runner->next;
-        }
-        ranks[i++] = rank;
+        ranks[i++] = calc_rank(a, cur);
         cur = cur->next;
     }
-    cur = a;
-    i = 0;
-    while (cur)
-    {
-        cur->val = ranks[i++];
-        cur = cur->next;
-    }
+    assign_ranks(a, ranks, size);
     free(ranks);
 }
 

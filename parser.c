@@ -6,11 +6,12 @@
 /*   By: andmigue <andmigue@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/11 17:53:11 by andmigue          #+#    #+#             */
-/*   Updated: 2026/06/12 10:38:17 by andmigue         ###   ########.fr       */
+/*   Updated: 2026/06/30 17:33:29 by andmigue         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
+#include "ft_printf.h"
 
 int	is_valid_number(char *str)
 {
@@ -152,20 +153,4 @@ t_stack	*parse_args(int argc, char **argv, int start, int *err)
         return (stack);
     }
     return (parse_multiple(argc, argv, start, err));
-}
-void *pushswap_parsing(char *str, char **av, int ac)
-{
-	int i;
-
-	i = 0;
-	if (ac > 2)
-	{
-		if (!is_valid_number(av[i]))
-		{
-    		printf("Error\n", 2);
-    		exit(EXIT_FAILURE);
-		}
-	}
-	else
-		exit(EXIT_SUCCESS);
 }

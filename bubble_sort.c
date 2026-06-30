@@ -6,11 +6,12 @@
 /*   By: andmigue <andmigue@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/12 10:40:42 by andmigue          #+#    #+#             */
-/*   Updated: 2026/06/19 18:10:18 by andmigue         ###   ########.fr       */
+/*   Updated: 2026/06/30 17:15:18 by andmigue         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
+#include "ft_printf.h"
 
 void    bubble_sort(t_stack **a, t_stack **b, t_flags *flags)
 {

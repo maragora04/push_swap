@@ -6,11 +6,12 @@
 /*   By: andmigue <andmigue@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/12 13:51:00 by andmigue          #+#    #+#             */
-/*   Updated: 2026/06/19 17:44:41 by andmigue         ###   ########.fr       */
+/*   Updated: 2026/06/30 17:15:56 by andmigue         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
+#include "ft_printf.h"
 
 static void push(t_stack **src, t_stack **dst)
 {

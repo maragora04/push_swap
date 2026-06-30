@@ -6,11 +6,12 @@
 /*   By: andmigue <andmigue@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/06 20:56:51 by mamendes          #+#    #+#             */
-/*   Updated: 2026/06/12 13:53:52 by andmigue         ###   ########.fr       */
+/*   Updated: 2026/06/30 17:16:21 by andmigue         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
+#include "ft_printf.h"
 
 void	stack_add_back(t_stack **stack, int val)
 {

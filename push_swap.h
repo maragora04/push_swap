@@ -6,7 +6,7 @@
 /*   By: andmigue <andmigue@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/06 20:57:10 by mamendes          #+#    #+#             */
-/*   Updated: 2026/06/19 19:44:46 by andmigue         ###   ########.fr       */
+/*   Updated: 2026/06/30 17:26:28 by andmigue         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@
 # define SIMPLE 1
 # define MEDIUM 2
 # define COMPLEX 3
+
 
 # include <stdlib.h>
 # include <stdio.h>
@@ -98,5 +99,7 @@ void    normalize(t_stack *a, int size);
 void    chunk_sort(t_stack **a, t_stack **b, t_flags *flags);
 
 void    sort(t_stack **a, t_stack **b, t_flags *flags);
-
+void    sort2(t_stack **a, t_stack **b, t_flags *flags);
+float   compute_disorder(t_stack **a, t_flags *flags);
+void	print_disorder(float disorder, t_flags *flags);
 #endif

@@ -6,13 +6,13 @@
 /*   By: andmigue <andmigue@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/29 16:00:19 by andmigue          #+#    #+#             */
-/*   Updated: 2026/06/19 19:44:35 by andmigue         ###   ########.fr       */
+/*   Updated: 2026/06/30 17:43:54 by andmigue         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdlib.h>
 #include "push_swap.h"
-
+#include "ft_printf.h"
 
 int is_sorted(t_stack *stack)
 {
@@ -33,6 +33,8 @@ void    sort_three(t_stack **a, t_flags *flags)
     first = (*a)->val;
     second = (*a)->next->val;
     third = (*a)->next->next->val;
+
+	
     if (first > second && second < third && first < third)
         sa(a, flags);
     else if (first > second && second > third)
@@ -52,25 +54,36 @@ void    sort_three(t_stack **a, t_flags *flags)
 }
 static void pick_adaptive(t_stack **a, t_stack **b, t_flags *flags, int size)
 {
-    if (size <= 100)
+	float disorder;
+
+	disorder = compute_disorder(a, flags);
+	if (disorder < 0.2)
+		bubble_sort(a, b, flags);
+    else if (disorder < 0.5 && disorder >= 0.2)
     {
         normalize(*a, size);
-        chunk_sort(a, b, flags);     // chunk is great for small-mid size
+        chunk_sort(a, b, flags);
     }
     else
     {
         normalize(*a, size);
-        radix_sort(a, b, flags);     // radix scales better for large size
+        radix_sort(a, b, flags);
     }
 }
 
 void    sort(t_stack **a, t_stack **b, t_flags *flags)
 {
     int size;
+	float disorder;
 
+	disorder = compute_disorder(a, flags);
     size = stack_size(*a);
-    if (size <= 1)
-        return ;
+	if (size <= 1)
+		return ;
+	if (flags->bench)
+	{
+    	print_disorder(disorder, flags);
+	}
     if (size == 2)
     {
         if ((*a)->val > (*a)->next->val)
@@ -85,6 +98,19 @@ void    sort(t_stack **a, t_stack **b, t_flags *flags)
     if (flags->strategy == SIMPLE)
         bubble_sort(a, b, flags);
     else if (flags->strategy == MEDIUM)
+        sort2(a, b, flags);
+    else if (flags->strategy == COMPLEX)
+        sort2(a, b, flags);
+    else
+        pick_adaptive(a, b, flags, size);
+}
+
+void sort2(t_stack **a, t_stack **b, t_flags *flags)
+{
+	int size;
+
+    size = stack_size(*a);
+    if (flags->strategy == MEDIUM)
     {
         normalize(*a, size);
         chunk_sort(a, b, flags);
@@ -94,11 +120,7 @@ void    sort(t_stack **a, t_stack **b, t_flags *flags)
         normalize(*a, size);
         radix_sort(a, b, flags);
     }
-    else
-        pick_adaptive(a, b, flags, size);
 }
-
-
 
 int main(int argc, char **argv)
 {

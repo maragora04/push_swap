@@ -6,7 +6,7 @@
 /*   By: mamendes <mamendes@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/29 16:00:19 by andmigue          #+#    #+#             */
-/*   Updated: 2026/07/03 17:05:30 by mamendes         ###   ########.fr       */
+/*   Updated: 2026/07/03 18:10:49 by mamendes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -151,46 +151,9 @@ int main(int argc, char **argv)
     return (0);
 }
 
-//parser - struct!! - ops(importante separar os writes das operacoes!!!!!!) - 
-//algorithms - bench - (opcional)libft
+//parser - struct!! - ops(importante separar os writes das operacoes!!!!!!) acho q isto ja ta feito nao?
+//algorithms - bench also feito?
 //ver guidelines antes de submeter - PDF
 //live code preparado
-
-
-// int	main(int argc, char **argv)
-// {
-//     t_stack	*a;
-//     t_stack	*b;
-//     t_flags	flags;
-//     int		start;
-//     int		err;
-//     int i;
-
-//     if (argc >= 2)
-//     {
-//         i = 0;
-//         start = set_strategy(&flags, argv[1]);
-//         if (start == -1)
-//         {
-//             write(2, "Error1\n", 6);
-//             return (1);
-//         }
-//         parse_flags(argc, &argv[i], &flags);
-//         err = 0;
-//         a = parse_args(argc, &argv[i], start, &err);
-//         if (err)
-//         {
-//             write(2, "Error2\n", 6);
-//             return (1);
-//         }
-//         if (!a || is_sorted(a))
-//         {
-//             // free_stack(&a);
-//             return (0);
-//         }
-//     }
-//     b = NULL;
-//     // free_stack(&a);
-//     // free_stack(&b);
-//     return (0);
-// }
+//só pra nao me esquecer -> cc -Wall -Werror -Wextra *.c ft_printf/*.c -I ft_printf 
+//nao esquecer readme

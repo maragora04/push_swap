@@ -11,6 +11,7 @@
 /* ************************************************************************** */
 
 #include "push_swap.h"
+#include "ft_printf/ft_printf.h"
 
 int ft_strcmp(char *s1, char *s2)
 {
@@ -39,6 +40,7 @@ char	*ft_strchr(const char *s, int c)
 		return ((char *)(s) + i);
 	return (NULL);
 }
+
 void	*ft_memset(void *b, int c, size_t len)
 {
 	unsigned char	*copy;
@@ -52,10 +54,12 @@ void	*ft_memset(void *b, int c, size_t len)
 	}
 	return (b);
 }
+
 void	ft_bzero(void *s, size_t n)
 {
 	ft_memset(s, 0, n);
 }
+
 void	*ft_calloc(size_t nmemb, size_t size)
 {
 	void	*ptr;

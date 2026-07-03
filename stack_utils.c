@@ -6,11 +6,12 @@
 /*   By: mamendes <mamendes@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/06 20:56:51 by mamendes          #+#    #+#             */
-/*   Updated: 2026/06/08 12:36:48 by mamendes         ###   ########.fr       */
+/*   Updated: 2026/07/03 17:18:12 by mamendes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
+#include "ft_printf/ft_printf.h"
 
 void	stack_add_back(t_stack **stack, int val)
 {
@@ -55,4 +56,17 @@ void	free_tokens(char **tokens)
     while (tokens[i])
         free(tokens[i++]);
     free(tokens);
+}
+
+int  stack_size(t_stack *a)
+{
+	int i;
+
+	i = 0;
+	while (a)
+	{
+		i++;
+		a = a->next;
+	}
+	return (i);
 }

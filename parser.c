@@ -5,13 +5,32 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: mamendes <mamendes@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/06/06 17:59:42 by mamendes          #+#    #+#             */
-/*   Updated: 2026/06/08 14:04:35 by mamendes         ###   ########.fr       */
+/*   Created: 2026/06/11 17:53:11 by andmigue          #+#    #+#             */
+/*   Updated: 2026/07/03 17:42:50 by mamendes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
+#include "ft_printf/ft_printf.h"
+//is it a number or a char? 
+int	is_valid_number(char *str)
+{
+	int	i;
 
+	i = 0;
+	if (str[i] == '+' || str[i] == '-')
+		i++;
+	if (!str[i])
+		return (0);
+	while (str[i])
+	{
+		if (str[i] < '0' || str[i] > '9')
+			return (0);
+		i++;
+	}
+	return (EXIT_FAILURE);
+}
+//gives you what algo to use according to the flag passed (or benchmark mode if --bench flag was passed)
 int	set_strategy(t_flags *flags, char *arg)
 {
     if (ft_strcmp(arg, "--simple") == 0)
@@ -45,7 +64,7 @@ int	parse_flags(int argc, char **argv, t_flags *flags)
     }
     return (i);
 }
-
+//if you pass smtg like "1 2 3 4", it goes here
 int	parse_single_str(t_stack **stack, char *str)
 {
     char	**tokens;
@@ -72,7 +91,33 @@ int	parse_single_str(t_stack **stack, char *str)
     free_tokens(tokens);
     return (1);
 }
+//checks for dup numbers
+int	has_duplicate(t_stack *stack, int val)
+{
+    while (stack)
+    {
+        if (stack->val == val)
+            return (1);
+        stack = stack->next;
+    }
+    return (0);
+}
+//validates the given args 
+int	validate_and_push(t_stack **stack, char *str)
+{
+    int	val;
+    int	err;
 
+    if (!is_valid_number(str))
+        return (0);
+    err = 0;
+    val = ft_atoi_safe(str, &err);
+    if (err || has_duplicate(*stack, val))
+        return (0);
+    stack_add_back(stack, val);
+    return (1);
+}
+//if you pass smtg like 1 2 " 3 4", it goes here
 t_stack	*parse_multiple(int argc, char **argv, int start, int *err)
 {
     t_stack	*stack;
@@ -91,7 +136,7 @@ t_stack	*parse_multiple(int argc, char **argv, int start, int *err)
     }
     return (stack);
 }
-
+//enters either parse mul or parse single for the given args, or exits on error
 t_stack	*parse_args(int argc, char **argv, int start, int *err)
 {
     t_stack	*stack;

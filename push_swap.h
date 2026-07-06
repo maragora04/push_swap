@@ -6,7 +6,7 @@
 /*   By: mamendes <mamendes@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/06 20:57:10 by mamendes          #+#    #+#             */
-/*   Updated: 2026/07/06 19:41:03 by mamendes         ###   ########.fr       */
+/*   Updated: 2026/07/06 20:29:56 by mamendes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,18 +53,18 @@ typedef struct s_stack
 
 typedef struct bench_mark
 {
-	int OP_SA;
-    int OP_SB;
-    int OP_SS;
-    int OP_PA;
-    int OP_PB;
-    int OP_RA;
-    int OP_RB;
-    int OP_RR;
-    int OP_RRA;
-    int OP_RRB;
-    int OP_RRR;
-    int OP_COUNT;
+	int OP_SA = 0;
+    int OP_SB = 0;
+    int OP_SS = 0;
+    int OP_PA = 0;
+    int OP_PB = 0;
+    int OP_RA = 0;
+    int OP_RB = 0;
+    int OP_RR = 0;
+    int OP_RRA = 0;
+    int OP_RRB = 0;
+    int OP_RRR = 0;
+    int OP_COUNT = 0;
 	int total_ops;
 	int disorder;
 	int strategy; 

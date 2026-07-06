@@ -6,7 +6,7 @@
 /*   By: mamendes <mamendes@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/30 16:05:11 by andmigue          #+#    #+#             */
-/*   Updated: 2026/07/03 17:05:07 by mamendes         ###   ########.fr       */
+/*   Updated: 2026/07/06 20:34:01 by mamendes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,16 +35,16 @@ float   compute_disorder(t_stack **a, t_flags *flags)
         write(1, "benchmark mode\n", 16);
     return (mistakes / total_pairs);
 }
-
+//this is the wrong way of doing it
 void print_disorder(float disorder, t_flags *flags)
 {
-    int whole;
+    int unit;
     int decimal;
 
     (void)flags;
-    whole = (int)disorder;
-    decimal = (int)((disorder - whole) * 100);
+    unit = (int)disorder;
+    decimal = (int)((disorder - unit) * 100);
     if (decimal < 0)
         decimal = -decimal;
-    ft_printf("disorder: %d.%d\n", whole, decimal);
+    ft_printf("disorder: %d.%d\n", unit, decimal);
 }

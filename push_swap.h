@@ -6,7 +6,7 @@
 /*   By: mamendes <mamendes@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/06 20:57:10 by mamendes          #+#    #+#             */
-/*   Updated: 2026/07/03 17:42:02 by mamendes         ###   ########.fr       */
+/*   Updated: 2026/07/06 19:41:03 by mamendes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,6 +50,25 @@ typedef struct s_stack
 	int             val;
 	struct s_stack  *next;
 }   t_stack;
+
+typedef struct bench_mark
+{
+	int OP_SA;
+    int OP_SB;
+    int OP_SS;
+    int OP_PA;
+    int OP_PB;
+    int OP_RA;
+    int OP_RB;
+    int OP_RR;
+    int OP_RRA;
+    int OP_RRB;
+    int OP_RRR;
+    int OP_COUNT;
+	int total_ops;
+	int disorder;
+	int strategy; 
+} bench_mark;
 
 int		ft_strcmp(char *s1, char *s2);
 char	**ft_split(char const *s, char c);

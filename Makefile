@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: andmigue <andmigue@student.42.fr>          +#+  +:+       +#+         #
+#    By: mamendes <mamendes@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2026/06/11 17:49:02 by andmigue          #+#    #+#              #
-#    Updated: 2026/06/30 17:17:24 by andmigue         ###   ########.fr        #
+#    Updated: 2026/07/06 20:07:47 by mamendes         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,9 +14,22 @@ NAME = push_swap
 CC = cc
 RM = rm -f
 
-SRC = ft_split.c more_utils.c operations.c parser.c stack_utils.c \
-      bubble_sort.c ft_atoi_safe.c main.c operations_rotate.c \
-	  operations_rrotate.c operations_push.c radix.c chunk.c disorder.c \
+SRC = \
+	algorithms/bubble_sort.c \
+	algorithms/chunk.c \
+	algorithms/radix.c \
+	operations/operations_push.c \
+	operations/operations_rotate.c \
+	operations/operations_rrotate.c \
+	operations/operations.c \
+	parsing/bench.c \
+	parsing/disorder.c \
+	parsing/ft_atoi_safe.c \
+	parsing/ft_split.c \
+	parsing/more_utils.c \
+	parsing/parser.c \
+	parsing/stack_utils.c \
+	main.c \
 
 OBJS = $(SRC:.c=.o)
 

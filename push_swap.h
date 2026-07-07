@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mamendes <mamendes@student.42.fr>          +#+  +:+       +#+        */
+/*   By: andmigue <andmigue@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/06 20:57:10 by mamendes          #+#    #+#             */
-/*   Updated: 2026/07/06 20:29:56 by mamendes         ###   ########.fr       */
+/*   Updated: 2026/07/07 18:45:40 by andmigue         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,24 +51,23 @@ typedef struct s_stack
 	struct s_stack  *next;
 }   t_stack;
 
-typedef struct bench_mark
+typedef struct s_bench
 {
-	int OP_SA = 0;
-    int OP_SB = 0;
-    int OP_SS = 0;
-    int OP_PA = 0;
-    int OP_PB = 0;
-    int OP_RA = 0;
-    int OP_RB = 0;
-    int OP_RR = 0;
-    int OP_RRA = 0;
-    int OP_RRB = 0;
-    int OP_RRR = 0;
-    int OP_COUNT = 0;
-	int total_ops;
-	int disorder;
-	int strategy; 
-} bench_mark;
+    int op_sa;
+    int op_sb;
+    int op_ss;
+    int op_pa;
+    int op_pb;
+    int op_ra;
+    int op_rb;
+    int op_rr;
+    int op_rra;
+    int op_rrb;
+    int op_rrr;
+    int total_ops;
+    float disorder;
+    int strategy;
+}   bench_mark;
 
 int		ft_strcmp(char *s1, char *s2);
 char	**ft_split(char const *s, char c);

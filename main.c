@@ -6,7 +6,7 @@
 /*   By: mamendes <mamendes@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/29 16:00:19 by andmigue          #+#    #+#             */
-/*   Updated: 2026/07/03 18:10:49 by mamendes         ###   ########.fr       */
+/*   Updated: 2026/07/08 03:18:48 by mamendes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,7 @@ void pick_adaptive(t_stack **a, t_stack **b, t_flags *flags, int size)
 {
 	float disorder;
 
-	disorder = compute_disorder(a, flags);
+	disorder = compute_disorder(a);
 	if (disorder < 0.2)
 		bubble_sort(a, b, flags);
     else if (disorder < 0.5 && disorder >= 0.2)
@@ -98,7 +98,7 @@ void	sort(t_stack **a, t_stack **b, t_flags *flags)
 	float	disorder;
 	int		size;
 
-	disorder = compute_disorder(a, flags);
+	disorder = compute_disorder(a);
 	size = stack_size(*a);
 	if (size <= 1)
 		return ;

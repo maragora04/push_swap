@@ -6,7 +6,7 @@
 /*   By: mamendes <mamendes@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/06 20:57:10 by mamendes          #+#    #+#             */
-/*   Updated: 2026/07/06 20:29:56 by mamendes         ###   ########.fr       */
+/*   Updated: 2026/07/08 03:14:40 by mamendes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,6 +42,8 @@ typedef struct s_flags
     int strategy;
     int bench;
     int op_count[OP_COUNT];
+	int op_sa, op_sb, op_ss, op_pa, op_pb;
+	int op_ra, op_rb, op_rr, op_rra, op_rrb, op_rrr;
     int total_ops;
 }   t_flags;
 
@@ -51,24 +53,6 @@ typedef struct s_stack
 	struct s_stack  *next;
 }   t_stack;
 
-typedef struct bench_mark
-{
-	int OP_SA = 0;
-    int OP_SB = 0;
-    int OP_SS = 0;
-    int OP_PA = 0;
-    int OP_PB = 0;
-    int OP_RA = 0;
-    int OP_RB = 0;
-    int OP_RR = 0;
-    int OP_RRA = 0;
-    int OP_RRB = 0;
-    int OP_RRR = 0;
-    int OP_COUNT = 0;
-	int total_ops;
-	int disorder;
-	int strategy; 
-} bench_mark;
 
 int		ft_strcmp(char *s1, char *s2);
 char	**ft_split(char const *s, char c);
@@ -76,7 +60,7 @@ char	*ft_strchr(const char *s, int c);
 void	*ft_calloc(size_t nmemb, size_t size);
 int		set_strategy(t_flags *flags, char *arg);
 int		parse_flags(int argc, char **argv, t_flags *flags);
-int	parse_single_str(t_stack **stack, char *str);
+int		parse_single_str(t_stack **stack, char *str);
 t_stack	*parse_multiple(int argc, char **argv, int start, int *err);
 t_stack	*parse_args(int argc, char **argv, int start, int *err);
 
@@ -115,9 +99,12 @@ void    chunk_sort(t_stack **a, t_stack **b, t_flags *flags);
 
 void    sort(t_stack **a, t_stack **b, t_flags *flags);
 void    sort2(t_stack **a, t_stack **b, t_flags *flags);
-float   compute_disorder(t_stack **a, t_flags *flags);
+float   compute_disorder(t_stack **a);
 void	print_disorder(float disorder, t_flags *flags);
 void	dispatch_strategy(t_stack **a, t_stack **b, t_flags *flags, int size);
 void	handle_small_stack(t_stack **a, t_flags *flags, int size);
+void 	print_bench(t_flags *flags, float disorder);
+char 	*strategy_print(t_flags *flags);
+
 
 #endif

@@ -27,25 +27,11 @@ void    sa(t_stack **a, t_flags *flags)
 {
     swap(a);
     emit_op(flags, "sa\n", 3, OP_SA);
-	if (flags->bench)
-    {
-        flags->op_sa++;
-        flags->total_ops++;
-    }
-    else
-        ft_printf("sa\n");
 }
 void    sb(t_stack **b, t_flags *flags)
 {
     swap(b);
     emit_op(flags, "sb\n", 3, OP_SB);
-	if (flags->bench)
-    {
-        flags->op_sb++;
-        flags->total_ops++;
-    }
-    else
-        ft_printf("sb\n");
 }
 
 void    ss(t_stack **a, t_stack **b, t_flags *flags)
@@ -53,12 +39,5 @@ void    ss(t_stack **a, t_stack **b, t_flags *flags)
     swap(a);
     swap(b);
 	emit_op(flags, "ss\n", 3, OP_SS);
-	if (flags->bench)
-    {
-        flags->op_ss++;
-        flags->total_ops++;
-    }
-    else
-        ft_printf("ss\n");
 }
 

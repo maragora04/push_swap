@@ -6,7 +6,7 @@
 /*   By: mamendes <mamendes@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/06 20:57:10 by mamendes          #+#    #+#             */
-/*   Updated: 2026/07/08 03:14:40 by mamendes         ###   ########.fr       */
+/*   Updated: 2026/07/08 03:35:22 by mamendes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,6 +57,8 @@ typedef struct s_stack
 int		ft_strcmp(char *s1, char *s2);
 char	**ft_split(char const *s, char c);
 char	*ft_strchr(const char *s, int c);
+void	*ft_memset(void *b, int c, size_t len);
+void	ft_bzero(void *s, size_t n);
 void	*ft_calloc(size_t nmemb, size_t size);
 int		set_strategy(t_flags *flags, char *arg);
 int		parse_flags(int argc, char **argv, t_flags *flags);

@@ -6,7 +6,7 @@
 /*   By: mamendes <mamendes@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/12 11:41:49 by andmigue          #+#    #+#             */
-/*   Updated: 2026/07/08 02:59:25 by mamendes         ###   ########.fr       */
+/*   Updated: 2026/07/08 03:29:17 by mamendes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,26 +34,12 @@ void    ra(t_stack **a, t_flags *flags)
 {
     rotate(a);
     emit_op(flags, "ra\n", 3, OP_RA);
-	if (flags->bench)
-    {
-        flags->op_ra++;
-        flags->total_ops++;
-    }
-    else
-        ft_printf("ra\n");
 }
 
 void    rb(t_stack **b, t_flags *flags)
 {
     rotate(b);
     emit_op(flags, "rb\n", 3, OP_RB);
-	if (flags->bench)
-    {
-        flags->op_rb++;
-        flags->total_ops++;
-    }
-    else
-        ft_printf("rb\n");
 }
 
 void    rr(t_stack **a, t_stack **b, t_flags *flags)
@@ -61,11 +47,4 @@ void    rr(t_stack **a, t_stack **b, t_flags *flags)
     rotate(a);
     rotate(b);
     emit_op(flags, "rr\n", 3, OP_RR);
-	if (flags->bench)
-    {
-        flags->op_rr++;
-        flags->total_ops++;
-    }
-    else
-        ft_printf("rr\n");
 }

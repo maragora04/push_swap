@@ -6,7 +6,7 @@
 /*   By: mamendes <mamendes@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/29 16:00:19 by andmigue          #+#    #+#             */
-/*   Updated: 2026/07/08 03:18:48 by mamendes         ###   ########.fr       */
+/*   Updated: 2026/07/08 03:33:39 by mamendes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,7 +93,7 @@ void	dispatch_strategy(t_stack **a, t_stack **b, t_flags *flags, int size)
 }
 //split sort into 2 more functions for a smaller size, may need another file cuz this one is hugeeee
 
-void	sort(t_stack **a, t_stack **b, t_flags *flags)
+void sort(t_stack **a, t_stack **b, t_flags *flags)
 {
 	float	disorder;
 	int		size;
@@ -102,14 +102,12 @@ void	sort(t_stack **a, t_stack **b, t_flags *flags)
 	size = stack_size(*a);
 	if (size <= 1)
 		return ;
-	if (flags->bench)
-		print_disorder(disorder, flags);
 	if (size == 2 || size == 3)
-	{
 		handle_small_stack(a, flags, size);
-		return ;
-	}
-	dispatch_strategy(a, b, flags, size);
+	else
+		dispatch_strategy(a, b, flags, size);
+	if (flags->bench)
+		print_bench(flags, disorder);
 }
 
 void sort2(t_stack **a, t_stack **b, t_flags *flags)
@@ -139,6 +137,7 @@ int main(int argc, char **argv)
 
     a = NULL;
     b = NULL;
+    ft_bzero(&flags, sizeof(t_flags));
     start = parse_flags(argc, argv, &flags);
     if (start == -1)
         return (write(2, "Error\n", 6), 1);

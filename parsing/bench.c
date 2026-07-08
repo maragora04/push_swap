@@ -6,7 +6,7 @@
 /*   By: mamendes <mamendes@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/06 19:41:41 by mamendes          #+#    #+#             */
-/*   Updated: 2026/07/08 03:08:29 by mamendes         ###   ########.fr       */
+/*   Updated: 2026/07/08 03:28:00 by mamendes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,8 +30,9 @@ void print_bench(t_flags *flags, float disorder)
     ft_printf("[bench] strategy: %s\n", strategy_print(flags));
     ft_printf("[bench] total_ops: %d\n", flags->total_ops);
     ft_printf("[bench] sa: %d sb: %d ss: %d pa: %d pb: %d\n",
-        flags->op_sa, flags->op_sb, flags->op_ss, flags->op_pa, flags->op_pb);
+        flags->op_count[OP_SA], flags->op_count[OP_SB], flags->op_count[OP_SS],
+        flags->op_count[OP_PA], flags->op_count[OP_PB]);
     ft_printf("[bench] ra: %d rb: %d rr: %d rra: %d rrb: %d rrr: %d\n",
-        flags->op_ra, flags->op_rb, flags->op_rr,
-        flags->op_rra, flags->op_rrb, flags->op_rrr);
+        flags->op_count[OP_RA], flags->op_count[OP_RB], flags->op_count[OP_RR],
+        flags->op_count[OP_RRA], flags->op_count[OP_RRB], flags->op_count[OP_RRR]);
 }

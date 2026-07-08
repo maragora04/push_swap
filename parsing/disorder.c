@@ -6,7 +6,7 @@
 /*   By: mamendes <mamendes@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/30 16:05:11 by andmigue          #+#    #+#             */
-/*   Updated: 2026/07/08 03:18:29 by mamendes         ###   ########.fr       */
+/*   Updated: 2026/07/08 03:26:47 by mamendes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,8 +43,6 @@ void print_disorder(float disorder, t_flags *flags)
     percent = disorder * 100;
     unit = (int)percent;
     decimal = (int)((percent - unit) * 100 + 0.5);
-	if(flags->bench)
-		print_bench(flags, disorder);
     if (decimal == 100)
     {
         decimal = 0;

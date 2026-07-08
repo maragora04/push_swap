@@ -6,13 +6,13 @@
 /*   By: mamendes <mamendes@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/11 17:53:11 by andmigue          #+#    #+#             */
-/*   Updated: 2026/07/03 17:42:50 by mamendes         ###   ########.fr       */
+/*   Updated: 2026/07/08 03:50:13 by mamendes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 #include "ft_printf/ft_printf.h"
-//is it a number or a char? 
+ 
 int	is_valid_number(char *str)
 {
 	int	i;
@@ -28,9 +28,9 @@ int	is_valid_number(char *str)
 			return (0);
 		i++;
 	}
-	return (EXIT_FAILURE);
+	return (1);
 }
-//gives you what algo to use according to the flag passed (or benchmark mode if --bench flag was passed)
+
 int	set_strategy(t_flags *flags, char *arg)
 {
     if (ft_strcmp(arg, "--simple") == 0)
@@ -48,7 +48,6 @@ int	set_strategy(t_flags *flags, char *arg)
     return (1);
 }
 
-// returns index of first number arg, or -1 on unknown flag 
 int	parse_flags(int argc, char **argv, t_flags *flags)
 {
     int	i;
@@ -64,7 +63,7 @@ int	parse_flags(int argc, char **argv, t_flags *flags)
     }
     return (i);
 }
-//if you pass smtg like "1 2 3 4", it goes here
+
 int	parse_single_str(t_stack **stack, char *str)
 {
     char	**tokens;
@@ -91,7 +90,7 @@ int	parse_single_str(t_stack **stack, char *str)
     free_tokens(tokens);
     return (1);
 }
-//checks for dup numbers
+
 int	has_duplicate(t_stack *stack, int val)
 {
     while (stack)
@@ -102,7 +101,7 @@ int	has_duplicate(t_stack *stack, int val)
     }
     return (0);
 }
-//validates the given args 
+
 int	validate_and_push(t_stack **stack, char *str)
 {
     int	val;
@@ -117,7 +116,7 @@ int	validate_and_push(t_stack **stack, char *str)
     stack_add_back(stack, val);
     return (1);
 }
-//if you pass smtg like 1 2 " 3 4", it goes here
+
 t_stack	*parse_multiple(int argc, char **argv, int start, int *err)
 {
     t_stack	*stack;
@@ -136,7 +135,7 @@ t_stack	*parse_multiple(int argc, char **argv, int start, int *err)
     }
     return (stack);
 }
-//enters either parse mul or parse single for the given args, or exits on error
+
 t_stack	*parse_args(int argc, char **argv, int start, int *err)
 {
     t_stack	*stack;

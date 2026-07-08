@@ -6,126 +6,12 @@
 /*   By: mamendes <mamendes@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/29 16:00:19 by andmigue          #+#    #+#             */
-/*   Updated: 2026/07/08 03:33:39 by mamendes         ###   ########.fr       */
+/*   Updated: 2026/07/08 03:42:49 by mamendes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdlib.h>
 #include "push_swap.h"
 #include "ft_printf/ft_printf.h"
-
-int is_sorted(t_stack *stack)
-{
-	while(stack && stack->next)
-	{
-		if(stack->val > stack->next->val)
-			return (0);
-		stack = stack->next;
-	}
-	return (1);
-}
-void    sort_three(t_stack **a, t_flags *flags)
-{
-    int first;
-    int second;
-    int third;
-
-    first = (*a)->val;
-    second = (*a)->next->val;
-    third = (*a)->next->next->val;
-
-	
-    if (first > second && second < third && first < third)
-        sa(a, flags);
-    else if (first > second && second > third)
-    {
-        sa(a, flags);
-        rra(a, flags);
-    }
-    else if (first > second && second < third && first > third)
-        ra(a, flags);
-    else if (first < second && second > third && first < third)
-    {
-        sa(a, flags);
-        ra(a, flags);
-    }
-    else if (first < second && second > third && first > third)
-        rra(a, flags);
-}
-void pick_adaptive(t_stack **a, t_stack **b, t_flags *flags, int size)
-{
-	float disorder;
-
-	disorder = compute_disorder(a);
-	if (disorder < 0.2)
-		bubble_sort(a, b, flags);
-    else if (disorder < 0.5 && disorder >= 0.2)
-    {
-        normalize(*a, size);
-        chunk_sort(a, b, flags);
-    }
-    else
-    {
-        normalize(*a, size);
-        radix_sort(a, b, flags);
-    }
-}
-//split sort into 2 more functions for a smaller size, may need another file cuz this one is hugeeee
-void	handle_small_stack(t_stack **a, t_flags *flags, int size)
-{
-	if (size == 2)
-	{
-		if ((*a)->val > (*a)->next->val)
-			sa(a, flags);
-	}
-	else if (size == 3)
-		sort_three(a, flags);
-}
-
-void	dispatch_strategy(t_stack **a, t_stack **b, t_flags *flags, int size)
-{
-	if (flags->strategy == SIMPLE)
-		bubble_sort(a, b, flags);
-	else if (flags->strategy == MEDIUM || flags->strategy == COMPLEX)
-		sort2(a, b, flags);
-	else
-		pick_adaptive(a, b, flags, size);
-}
-//split sort into 2 more functions for a smaller size, may need another file cuz this one is hugeeee
-
-void sort(t_stack **a, t_stack **b, t_flags *flags)
-{
-	float	disorder;
-	int		size;
-
-	disorder = compute_disorder(a);
-	size = stack_size(*a);
-	if (size <= 1)
-		return ;
-	if (size == 2 || size == 3)
-		handle_small_stack(a, flags, size);
-	else
-		dispatch_strategy(a, b, flags, size);
-	if (flags->bench)
-		print_bench(flags, disorder);
-}
-
-void sort2(t_stack **a, t_stack **b, t_flags *flags)
-{
-	int size;
-
-    size = stack_size(*a);
-    if (flags->strategy == MEDIUM)
-    {
-        normalize(*a, size);
-        chunk_sort(a, b, flags);
-    }
-    else if (flags->strategy == COMPLEX)
-    {
-        normalize(*a, size);
-        radix_sort(a, b, flags);
-    }
-}
 
 int main(int argc, char **argv)
 {
@@ -150,9 +36,8 @@ int main(int argc, char **argv)
     return (0);
 }
 
-//parser - struct!! - ops(importante separar os writes das operacoes!!!!!!) acho q isto ja ta feito nao?
-//algorithms - bench also feito?
+//parser - struct!! - ops(importante separar os writes das operacoes!!!!!!) feito
+//algorithms - tbmfeito
 //ver guidelines antes de submeter - PDF
-//live code preparado
-//só pra nao me esquecer -> cc -Wall -Werror -Wextra *.c ft_printf/*.c -I ft_printf 
+//preparar live code
 //nao esquecer readme

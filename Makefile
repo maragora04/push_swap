@@ -6,7 +6,7 @@
 #    By: mamendes <mamendes@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2026/06/11 17:49:02 by andmigue          #+#    #+#              #
-#    Updated: 2026/07/06 20:07:47 by mamendes         ###   ########.fr        #
+#    Updated: 2026/07/08 03:46:59 by mamendes         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -24,11 +24,13 @@ SRC = \
 	operations/operations.c \
 	parsing/bench.c \
 	parsing/disorder.c \
-	parsing/ft_atoi_safe.c \
-	parsing/ft_split.c \
-	parsing/more_utils.c \
 	parsing/parser.c \
-	parsing/stack_utils.c \
+	utils/ft_atoi_safe.c \
+	utils/ft_split.c \
+	utils/utils.c \
+	utils/stack_utils.c \
+	sort/sorting.c \
+	sort/sorting2.c \
 	main.c \
 
 OBJS = $(SRC:.c=.o)

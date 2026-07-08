@@ -6,7 +6,7 @@
 /*   By: mamendes <mamendes@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/06 20:57:10 by mamendes          #+#    #+#             */
-/*   Updated: 2026/07/08 03:35:22 by mamendes         ###   ########.fr       */
+/*   Updated: 2026/07/08 03:43:16 by mamendes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ enum e_op
     OP_RRR,
     OP_COUNT  
 };
-// total number of ops, used for array size
+
 typedef struct s_flags
 {
     int strategy;
@@ -52,7 +52,6 @@ typedef struct s_stack
 	int             val;
 	struct s_stack  *next;
 }   t_stack;
-
 
 int		ft_strcmp(char *s1, char *s2);
 char	**ft_split(char const *s, char c);

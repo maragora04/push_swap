@@ -6,7 +6,7 @@
 /*   By: mamendes <mamendes@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/11 17:53:11 by andmigue          #+#    #+#             */
-/*   Updated: 2026/07/08 03:50:13 by mamendes         ###   ########.fr       */
+/*   Updated: 2026/07/14 03:59:08 by mamendes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,6 +43,8 @@ int	set_strategy(t_flags *flags, char *arg)
         flags->strategy = ADAPTIVE;
     else if (ft_strcmp(arg, "--bench") == 0)
         flags->bench = 1;
+    // else if (ft_strcmp(arg, "--count-only") == 0)
+    //     flags->strategy = COUNT;
     else
         return (0);
     return (1);

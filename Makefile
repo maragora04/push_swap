@@ -6,7 +6,7 @@
 #    By: mamendes <mamendes@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2026/06/11 17:49:02 by andmigue          #+#    #+#              #
-#    Updated: 2026/07/08 03:46:59 by mamendes         ###   ########.fr        #
+#    Updated: 2026/07/14 03:07:55 by mamendes         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -29,6 +29,7 @@ SRC = \
 	utils/ft_split.c \
 	utils/utils.c \
 	utils/stack_utils.c \
+	sort/sort_helpers.c \
 	sort/sorting.c \
 	sort/sorting2.c \
 	main.c \

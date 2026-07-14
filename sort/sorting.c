@@ -6,7 +6,7 @@
 /*   By: mamendes <mamendes@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/08 03:41:20 by mamendes          #+#    #+#             */
-/*   Updated: 2026/07/08 03:48:49 by mamendes         ###   ########.fr       */
+/*   Updated: 2026/07/14 02:52:39 by mamendes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,3 +52,4 @@ void    sort_three(t_stack **a, t_flags *flags)
     else if (first < second && second > third && first > third)
         rra(a, flags);
 }
+

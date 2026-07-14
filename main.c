@@ -6,7 +6,7 @@
 /*   By: mamendes <mamendes@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/29 16:00:19 by andmigue          #+#    #+#             */
-/*   Updated: 2026/07/08 03:42:49 by mamendes         ###   ########.fr       */
+/*   Updated: 2026/07/14 03:58:24 by mamendes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,8 @@ int main(int argc, char **argv)
     if (err)
         return (write(2, "Error\n", 6), free_stack(&a), 1);
     sort(&a, &b, &flags);
+    //    if (flags.strategy == COUNT)
+    //      ft_printf("%d\n", flags.total_ops);
     free_stack(&a);
     free_stack(&b);
     return (0);

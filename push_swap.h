@@ -6,7 +6,7 @@
 /*   By: mamendes <mamendes@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/06 20:57:10 by mamendes          #+#    #+#             */
-/*   Updated: 2026/07/08 03:43:16 by mamendes         ###   ########.fr       */
+/*   Updated: 2026/07/14 03:59:25 by mamendes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@
 # define SIMPLE 1
 # define MEDIUM 2
 # define COMPLEX 3
+//# define COUNT 4
 
 # include <stdlib.h>
 # include <stdio.h>
@@ -89,6 +90,8 @@ void    rrr(t_stack **a, t_stack **b, t_flags *flags);
 void    emit_op(t_flags *flags, const char *op, int len, int op_index);
 
 void    sort_three(t_stack **a, t_flags *flags);
+void    sort_five(t_stack **a, t_stack **b, t_flags *flags);
+int     is_sorted(t_stack *stack);
 
 void    bubble_sort(t_stack **a, t_stack **b, t_flags *flags);
 
@@ -103,7 +106,7 @@ void    sort2(t_stack **a, t_stack **b, t_flags *flags);
 float   compute_disorder(t_stack **a);
 void	print_disorder(float disorder, t_flags *flags);
 void	dispatch_strategy(t_stack **a, t_stack **b, t_flags *flags, int size);
-void	handle_small_stack(t_stack **a, t_flags *flags, int size);
+void	handle_small_stack(t_stack **a, t_stack **b, t_flags *flags, int size);
 void 	print_bench(t_flags *flags, float disorder);
 char 	*strategy_print(t_flags *flags);
 

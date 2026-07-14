@@ -6,7 +6,7 @@
 /*   By: mamendes <mamendes@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/12 13:54:32 by andmigue          #+#    #+#             */
-/*   Updated: 2026/07/03 17:06:39 by mamendes         ###   ########.fr       */
+/*   Updated: 2026/07/14 01:08:55 by mamendes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,13 +85,13 @@ void    radix_sort(t_stack **a, t_stack **b, t_flags *flags)
         while (i < size)
         {
             if (((*a)->val >> bit) & 1)
-                ra(a, flags);          // bit is 1 → stays in a
+                ra(a, flags);
             else
-                pb(a, b, flags);       // bit is 0 → goes to b
+                pb(a, b, flags);
             i++;
         }
         while (*b)
-            pa(a, b, flags);           // push everything back
+            pa(a, b, flags);
         bit++;
     }
 }

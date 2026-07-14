@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   sorting.c                                          :+:      :+:    :+:   */
+/*   sorting2.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mamendes <mamendes@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/08 03:40:05 by mamendes          #+#    #+#             */
-/*   Updated: 2026/07/08 03:40:36 by mamendes         ###   ########.fr       */
+/*   Updated: 2026/07/14 03:06:17 by mamendes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ void pick_adaptive(t_stack **a, t_stack **b, t_flags *flags, int size)
     }
 }
 
-void	handle_small_stack(t_stack **a, t_flags *flags, int size)
+void	handle_small_stack(t_stack **a, t_stack **b, t_flags *flags, int size)
 {
 	if (size == 2)
 	{
@@ -41,6 +41,8 @@ void	handle_small_stack(t_stack **a, t_flags *flags, int size)
 	}
 	else if (size == 3)
 		sort_three(a, flags);
+	else if (size == 4 || size == 5)
+		sort_five(a, b, flags);
 }
 
 void	dispatch_strategy(t_stack **a, t_stack **b, t_flags *flags, int size)
@@ -60,10 +62,14 @@ void sort(t_stack **a, t_stack **b, t_flags *flags)
 
 	disorder = compute_disorder(a);
 	size = stack_size(*a);
-	if (size <= 1)
+	if (is_sorted(*a) || size <= 1)
+	{
+		if (flags->bench)
+			print_bench(flags, disorder);	
 		return ;
-	if (size == 2 || size == 3)
-		handle_small_stack(a, flags, size);
+	}
+	if (size >= 2 && size <= 5)
+		handle_small_stack(a, b, flags, size);
 	else
 		dispatch_strategy(a, b, flags, size);
 	if (flags->bench)

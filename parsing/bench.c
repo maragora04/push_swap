@@ -6,7 +6,7 @@
 /*   By: mamendes <mamendes@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/06 19:41:41 by mamendes          #+#    #+#             */
-/*   Updated: 2026/07/08 03:28:00 by mamendes         ###   ########.fr       */
+/*   Updated: 2026/07/14 03:36:07 by mamendes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,12 +15,18 @@
 
 char *strategy_print(t_flags *flags)
 {
+    
     if (flags->strategy == SIMPLE)
         return ("Simple / O(n^2)");
     if (flags->strategy == MEDIUM)
-        return ("Medium / O(n log n)");
+        return ("Medium / O(n\xe2\x88\x9an)");
     if (flags->strategy == COMPLEX)
         return ("Complex / O(n log n)");
+    // else
+    //     if(!flags->strategy)
+    //     {
+    //         if(strategy )
+    //     } change this
     return ("Adaptive / O(n\xe2\x88\x9an)");
 }
 

@@ -6,7 +6,7 @@
 /*   By: mamendes <mamendes@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/12 10:40:42 by andmigue          #+#    #+#             */
-/*   Updated: 2026/07/03 17:05:15 by mamendes         ###   ########.fr       */
+/*   Updated: 2026/07/14 01:07:57 by mamendes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,5 +41,3 @@ void	bubble_sort(t_stack **a, t_stack **b, t_flags *flags)
 		size--;
 	}
 }
-
-//norm compliant now (kinda):)

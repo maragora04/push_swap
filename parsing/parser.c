@@ -6,7 +6,7 @@
 /*   By: mamendes <mamendes@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/11 17:53:11 by andmigue          #+#    #+#             */
-/*   Updated: 2026/07/14 03:59:08 by mamendes         ###   ########.fr       */
+/*   Updated: 2026/07/15 10:41:09 by mamendes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,14 @@ int	is_valid_number(char *str)
 
 int	set_strategy(t_flags *flags, char *arg)
 {
+    if (ft_strcmp(arg, "--bench") == 0)
+    {
+        if (flags->bench == 1)
+            return (0);
+        return (flags->bench = 1, 1);
+    }
+    if (flags->strategy != -1)
+        return (0);
     if (ft_strcmp(arg, "--simple") == 0)
         flags->strategy = SIMPLE;
     else if (ft_strcmp(arg, "--medium") == 0)
@@ -41,8 +49,6 @@ int	set_strategy(t_flags *flags, char *arg)
         flags->strategy = COMPLEX;
     else if (ft_strcmp(arg, "--adaptive") == 0)
         flags->strategy = ADAPTIVE;
-    else if (ft_strcmp(arg, "--bench") == 0)
-        flags->bench = 1;
     // else if (ft_strcmp(arg, "--count-only") == 0)
     //     flags->strategy = COUNT;
     else
@@ -54,7 +60,7 @@ int	parse_flags(int argc, char **argv, t_flags *flags)
 {
     int	i;
 
-    flags->strategy = ADAPTIVE;
+    flags->strategy = -1;
     flags->bench = 0;
     i = 1;
     while (i < argc && argv[i][0] == '-' && argv[i][1] == '-')
@@ -63,6 +69,8 @@ int	parse_flags(int argc, char **argv, t_flags *flags)
             return (-1);
         i++;
     }
+    if (flags->strategy == -1)
+        flags->strategy = ADAPTIVE;
     return (i);
 }
 

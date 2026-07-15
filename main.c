@@ -6,7 +6,7 @@
 /*   By: mamendes <mamendes@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/29 16:00:19 by andmigue          #+#    #+#             */
-/*   Updated: 2026/07/14 03:58:24 by mamendes         ###   ########.fr       */
+/*   Updated: 2026/07/15 11:01:30 by mamendes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,3 +43,5 @@ int main(int argc, char **argv)
 //ver guidelines antes de submeter - PDF
 //preparar live code
 //nao esquecer readme
+//shuf -i 0-500 -n 254 > arg ; ./push_swap $(cat arg) | ./checker_linux $(cat arg) 
+//-n modificavel 

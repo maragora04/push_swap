@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: mamendes <mamendes@student.42.fr>          +#+  +:+       +#+         #
+#    By: andmigue <andmigue@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2026/06/11 17:49:02 by andmigue          #+#    #+#              #
-#    Updated: 2026/07/14 03:07:55 by mamendes         ###   ########.fr        #
+#    Updated: 2026/07/17 12:23:11 by andmigue         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -25,6 +25,7 @@ SRC = \
 	parsing/bench.c \
 	parsing/disorder.c \
 	parsing/parser.c \
+	parsing/parser_utils.c \
 	utils/ft_atoi_safe.c \
 	utils/ft_split.c \
 	utils/utils.c \

@@ -3,33 +3,33 @@
 /*                                                        :::      ::::::::   */
 /*   sorting2.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mamendes <mamendes@student.42.fr>          +#+  +:+       +#+        */
+/*   By: andmigue <andmigue@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/08 03:40:05 by mamendes          #+#    #+#             */
-/*   Updated: 2026/07/14 03:06:17 by mamendes         ###   ########.fr       */
+/*   Updated: 2026/07/17 13:40:55 by andmigue         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 #include "ft_printf/ft_printf.h"
 
-void pick_adaptive(t_stack **a, t_stack **b, t_flags *flags, int size)
+void	pick_adaptive(t_stack **a, t_stack **b, t_flags *flags, int size)
 {
-	float disorder;
+	float	disorder;
 
 	disorder = compute_disorder(a);
 	if (disorder < 0.2)
 		bubble_sort(a, b, flags);
-    else if (disorder < 0.5 && disorder >= 0.2)
-    {
-        normalize(*a, size);
-        chunk_sort(a, b, flags);
-    }
-    else
-    {
-        normalize(*a, size);
-        radix_sort(a, b, flags);
-    }
+	else if (disorder < 0.5 && disorder >= 0.2)
+	{
+		normalize(*a, size);
+		chunk_sort(a, b, flags);
+	}
+	else
+	{
+		normalize(*a, size);
+		radix_sort(a, b, flags);
+	}
 }
 
 void	handle_small_stack(t_stack **a, t_stack **b, t_flags *flags, int size)
@@ -55,7 +55,7 @@ void	dispatch_strategy(t_stack **a, t_stack **b, t_flags *flags, int size)
 		pick_adaptive(a, b, flags, size);
 }
 
-void sort(t_stack **a, t_stack **b, t_flags *flags)
+void	sort(t_stack **a, t_stack **b, t_flags *flags)
 {
 	float	disorder;
 	int		size;
@@ -65,7 +65,7 @@ void sort(t_stack **a, t_stack **b, t_flags *flags)
 	if (is_sorted(*a) || size <= 1)
 	{
 		if (flags->bench)
-			print_bench(flags, disorder);	
+			print_bench(flags, disorder);
 		return ;
 	}
 	if (size >= 2 && size <= 5)
@@ -76,19 +76,19 @@ void sort(t_stack **a, t_stack **b, t_flags *flags)
 		print_bench(flags, disorder);
 }
 
-void sort2(t_stack **a, t_stack **b, t_flags *flags)
+void	sort2(t_stack **a, t_stack **b, t_flags *flags)
 {
-	int size;
+	int	size;
 
-    size = stack_size(*a);
-    if (flags->strategy == MEDIUM)
-    {
-        normalize(*a, size);
-        chunk_sort(a, b, flags);
-    }
-    else if (flags->strategy == COMPLEX)
-    {
-        normalize(*a, size);
-        radix_sort(a, b, flags);
-    }
+	size = stack_size(*a);
+	if (flags->strategy == MEDIUM)
+	{
+		normalize(*a, size);
+		chunk_sort(a, b, flags);
+	}
+	else if (flags->strategy == COMPLEX)
+	{
+		normalize(*a, size);
+		radix_sort(a, b, flags);
+	}
 }

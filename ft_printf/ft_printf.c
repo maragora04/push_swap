@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   ft_printf.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: andmigue <andmigue@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mamendes <mamendes@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/18 15:49:48 by andmigue          #+#    #+#             */
-/*   Updated: 2026/06/15 18:30:38 by andmigue         ###   ########.fr       */
+/*   Updated: 2026/07/17 16:36:40 by mamendes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-static int	ft_specifier(char str, va_list args)
+static int	ft_specifier(char str, va_list *args, int fd)
 {
 	char	*low;
 	char	*up;
@@ -20,25 +20,25 @@ static int	ft_specifier(char str, va_list args)
 	low = "0123456789abcdef";
 	up = "0123456789ABCDEF";
 	if (str == 'c')
-		return (ft_putchar(va_arg(args, int)));
+		return (ft_putchar_fd(va_arg(*args, int), fd));
 	else if (str == 'd' || str == 'i')
-		return (ft_putnbr(va_arg(args, int)));
+		return (ft_putnbr(va_arg(*args, int), fd));
 	else if (str == 's')
-		return (ft_putstr(va_arg(args, char *)));
+		return (ft_putstr_fd(va_arg(*args, char *), fd));
 	else if (str == 'u')
-		return (ft_putnbr_un(va_arg(args, unsigned int)));
+		return (ft_putnbr_un(va_arg(*args, unsigned int), fd));
 	else if (str == 'x')
-		return (ft_printhex(va_arg(args, unsigned int), low));
+		return (ft_printhex(va_arg(*args, unsigned int), low, fd));
 	else if (str == 'X')
-		return (ft_printhex(va_arg(args, unsigned int), up));
+		return (ft_printhex(va_arg(*args, unsigned int), up, fd));
 	else if (str == 'p')
-		return (ft_printptr(va_arg(args, unsigned long)));
+		return (ft_printptr(va_arg(*args, unsigned long), fd));
 	else if (str == '%')
-		return (ft_putchar('%'));
+		return (ft_putchar_fd('%', fd));
 	return (0);
 }
 
-int	ft_printf(const char *s, ...)
+int	ft_printf_fd(int fd, const char *s, ...)
 {
 	va_list	args;
 	int		count;
@@ -51,12 +51,12 @@ int	ft_printf(const char *s, ...)
 	{
 		if (*s == '%')
 		{
-			count += ft_specifier(*(++s), args);
+			count += ft_specifier(*(++s), &args, fd);
 			if (*s == '\0')
 				return (va_end(args), -1);
 		}
 		else
-			count += ft_putchar(*s);
+			count += ft_putchar_fd(*s, fd);
 		s++;
 	}
 	return (va_end(args), count);

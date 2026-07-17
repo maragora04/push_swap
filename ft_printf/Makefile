@@ -3,17 +3,17 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: andmigue <andmigue@student.42.fr>          +#+  +:+       +#+         #
+#    By: mamendes <mamendes@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2026/05/18 15:50:06 by andmigue          #+#    #+#              #
-#    Updated: 2026/05/24 11:48:45 by andmigue         ###   ########.fr        #
+#    Updated: 2026/07/17 15:44:56 by mamendes         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = libftprintf.a
 
 CC = cc
-CFLAGS = -Wall -Wextra -Werror
+CFLAGS = -g -Wall -Wextra -Werror
 AR = ar rcs
 RM = rm -f
 

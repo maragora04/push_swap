@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   chunk.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: andmigue <andmigue@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mamendes <mamendes@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/15 18:45:12 by andmigue          #+#    #+#             */
-/*   Updated: 2026/07/07 18:44:03 by andmigue         ###   ########.fr       */
+/*   Updated: 2026/07/17 16:45:57 by mamendes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,30 @@ static int	sqrt_chunk(int size)
 	while (i * i < size)
 		i++;
 	return (i);
+}
+
+static void	push_chunk_to_b(t_stack **a, t_stack **b,
+							int chunk_n, t_flags *flags)
+{
+	int	size;
+	int	i;
+	int	min;
+	int	max;
+
+	size = stack_size(*a);
+	min = chunk_n * sqrt_chunk(size);
+	max = min + sqrt_chunk(size) - 1;
+	if (max >= size)
+		max = size - 1;
+	i = 0;
+	while (i < size)
+	{
+		if ((*a)->val >= min && (*a)->val <= max)
+			pb(a, b, flags);
+		else
+			ra(a, flags);
+		i++;
+	}
 }
 
 static int	find_max_pos(t_stack *b)
@@ -43,32 +67,6 @@ static int	find_max_pos(t_stack *b)
 		b = b->next;
 	}
 	return (pos);
-}
-
-static void	push_chunk_to_b(t_stack **a, t_stack **b,
-							int chunk_n, t_flags *flags)
-{
-	int	size;
-	int	chunk_size;
-	int	i;
-	int	min;
-	int	max;
-
-	size = stack_size(*a);
-	chunk_size = sqrt_chunk(size);
-	min = chunk_n * chunk_size;
-	max = min + chunk_size - 1;
-	if (max >= size)
-		max = size - 1;
-	i = 0;
-	while (i < size)
-	{
-		if ((*a)->val >= min && (*a)->val <= max)
-			pb(a, b, flags);
-		else
-			ra(a, flags);
-		i++;
-	}
 }
 
 static void	pull_b_to_a(t_stack **a, t_stack **b, t_flags *flags)
@@ -96,13 +94,11 @@ static void	pull_b_to_a(t_stack **a, t_stack **b, t_flags *flags)
 void	chunk_sort(t_stack **a, t_stack **b, t_flags *flags)
 {
 	int	size;
-	int	chunk_size;
 	int	chunk_n;
 
 	size = stack_size(*a);
-	chunk_size = sqrt_chunk(size);
 	chunk_n = 0;
-	while (chunk_n * chunk_size < size)
+	while (chunk_n * sqrt_chunk(size) < size)
 	{
 		push_chunk_to_b(a, b, chunk_n, flags);
 		chunk_n++;

@@ -6,7 +6,7 @@
 #    By: mamendes <mamendes@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2026/06/11 17:49:02 by andmigue          #+#    #+#              #
-#    Updated: 2026/07/06 20:07:47 by mamendes         ###   ########.fr        #
+#    Updated: 2026/07/17 15:44:46 by mamendes         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -24,11 +24,15 @@ SRC = \
 	operations/operations.c \
 	parsing/bench.c \
 	parsing/disorder.c \
-	parsing/ft_atoi_safe.c \
-	parsing/ft_split.c \
-	parsing/more_utils.c \
 	parsing/parser.c \
-	parsing/stack_utils.c \
+	parsing/parser_utils.c \
+	utils/ft_atoi_safe.c \
+	utils/ft_split.c \
+	utils/utils.c \
+	utils/stack_utils.c \
+	sort/sort_helpers.c \
+	sort/sorting.c \
+	sort/sorting2.c \
 	main.c \
 
 OBJS = $(SRC:.c=.o)
@@ -36,7 +40,7 @@ OBJS = $(SRC:.c=.o)
 PRINTF_DIR = ft_printf
 PRINTF_LIB = $(PRINTF_DIR)/libftprintf.a
 
-CFLAGS = -Wall -Wextra -Werror -I. -I$(PRINTF_DIR)
+CFLAGS = -g -Wall -Wextra -Werror -I. -I$(PRINTF_DIR)
 
 all: $(NAME)
 

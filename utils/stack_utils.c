@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   stack_utils.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mamendes <mamendes@student.42.fr>          +#+  +:+       +#+        */
+/*   By: andmigue <andmigue@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/06 20:56:51 by mamendes          #+#    #+#             */
-/*   Updated: 2026/07/03 17:18:12 by mamendes         ###   ########.fr       */
+/*   Updated: 2026/07/17 13:44:46 by andmigue         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,52 +15,52 @@
 
 void	stack_add_back(t_stack **stack, int val)
 {
-    t_stack	*new;
-    t_stack	*tmp;
+	t_stack	*new;
+	t_stack	*tmp;
 
-    new = malloc(sizeof(t_stack));
-    if (!new)
-        return ;
-    new->val = val;
-    new->next = NULL;
-    if (!*stack)
-    {
-        *stack = new;
-        return ;
-    }
-    tmp = *stack;
-    while (tmp->next)
-        tmp = tmp->next;
-    tmp->next = new;
+	new = malloc(sizeof(t_stack));
+	if (!new)
+		return ;
+	new->val = val;
+	new->next = NULL;
+	if (!*stack)
+	{
+		*stack = new;
+		return ;
+	}
+	tmp = *stack;
+	while (tmp->next)
+		tmp = tmp->next;
+	tmp->next = new;
 }
 
 void	free_stack(t_stack **stack)
 {
-    t_stack	*tmp;
+	t_stack	*tmp;
 
-    while (*stack)
-    {
-        tmp = (*stack)->next;
-        free(*stack);
-        *stack = tmp;
-    }
+	while (*stack)
+	{
+		tmp = (*stack)->next;
+		free(*stack);
+		*stack = tmp;
+	}
 }
 
 void	free_tokens(char **tokens)
 {
-    int	i;
+	int	i;
 
-    if (!tokens)
-        return ;
-    i = 0;
-    while (tokens[i])
-        free(tokens[i++]);
-    free(tokens);
+	if (!tokens)
+		return ;
+	i = 0;
+	while (tokens[i])
+		free(tokens[i++]);
+	free(tokens);
 }
 
-int  stack_size(t_stack *a)
+int	stack_size(t_stack *a)
 {
-	int i;
+	int	i;
 
 	i = 0;
 	while (a)

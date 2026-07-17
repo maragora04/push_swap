@@ -13,14 +13,14 @@
 #include "push_swap.h"
 #include "ft_printf/ft_printf.h"
 
-int ft_strcmp(char *s1, char *s2)
+int	ft_strcmp(char *s1, char *s2)
 {
-    int i;
+	int	i;
 
-    i = 0;
-    while(s1[i] && s2[i] && s1[i] == s2[i])
-        i++;
-    return(s1[i] - s2[i]);
+	i = 0;
+	while (s1[i] && s2[i] && s1[i] == s2[i])
+		i++;
+	return (s1[i] - s2[i]);
 }
 
 char	*ft_strchr(const char *s, int c)

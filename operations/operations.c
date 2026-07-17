@@ -13,31 +13,44 @@
 #include "push_swap.h"
 #include "ft_printf/ft_printf.h"
 
-static void swap(t_stack **stack)
+void	emit_op(t_flags *flags, const char *op, int len, int op_index)
 {
-    int tmp;
-    if (!*stack || !(*stack)->next)
-        return ;
-    tmp = (*stack)->val;
-    (*stack)->val = (*stack)->next->val;
-    (*stack)->next->val = tmp;
+	if (!flags || !op)
+		return ;
+	if (op_index >= 0 && op_index < OP_COUNT)
+	{
+		flags->op_count[op_index]++;
+		flags->total_ops++;
+	}
+	write(1, op, len);
 }
 
-void    sa(t_stack **a, t_flags *flags)
+static void	swap(t_stack **stack)
 {
-    swap(a);
-    emit_op(flags, "sa\n", 3, OP_SA);
-}
-void    sb(t_stack **b, t_flags *flags)
-{
-    swap(b);
-    emit_op(flags, "sb\n", 3, OP_SB);
+	int	tmp;
+
+	if (!*stack || !(*stack)->next)
+		return ;
+	tmp = (*stack)->val;
+	(*stack)->val = (*stack)->next->val;
+	(*stack)->next->val = tmp;
 }
 
-void    ss(t_stack **a, t_stack **b, t_flags *flags)
+void	sa(t_stack **a, t_flags *flags)
 {
-    swap(a);
-    swap(b);
+	swap(a);
+	emit_op(flags, "sa\n", 3, OP_SA);
+}
+
+void	sb(t_stack **b, t_flags *flags)
+{
+	swap(b);
+	emit_op(flags, "sb\n", 3, OP_SB);
+}
+
+void	ss(t_stack **a, t_stack **b, t_flags *flags)
+{
+	swap(a);
+	swap(b);
 	emit_op(flags, "ss\n", 3, OP_SS);
 }
-

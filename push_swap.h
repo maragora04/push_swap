@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: andmigue <andmigue@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mamendes <mamendes@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/06 20:57:10 by mamendes          #+#    #+#             */
-/*   Updated: 2026/07/07 18:45:40 by andmigue         ###   ########.fr       */
+/*   Updated: 2026/07/17 16:45:18 by mamendes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@
 # define SIMPLE 1
 # define MEDIUM 2
 # define COMPLEX 3
+//# define COUNT 4
 
 # include <stdlib.h>
 # include <stdio.h>
@@ -23,59 +24,54 @@
 
 enum e_op
 {
-    OP_SA,
-    OP_SB,
-    OP_SS,
-    OP_PA,
-    OP_PB,
-    OP_RA,
-    OP_RB,
-    OP_RR,
-    OP_RRA,
-    OP_RRB,
-    OP_RRR,
-    OP_COUNT  
+	OP_SA,
+	OP_SB,
+	OP_SS,
+	OP_PA,
+	OP_PB,
+	OP_RA,
+	OP_RB,
+	OP_RR,
+	OP_RRA,
+	OP_RRB,
+	OP_RRR,
+	OP_COUNT
 };
-// total number of ops, used for array size
+
 typedef struct s_flags
 {
-    int strategy;
-    int bench;
-    int op_count[OP_COUNT];
-    int total_ops;
-}   t_flags;
+	int	strategy;
+	int	bench;
+	int	op_count[OP_COUNT];
+	int	op_sa;
+	int	op_sb;
+	int	op_ss;
+	int	op_pa;
+	int	op_pb;
+	int	op_ra;
+	int	op_rb;
+	int	op_rr;
+	int	op_rra;
+	int	op_rrb;
+	int	op_rrr;
+	int	total_ops;
+}	t_flags;
 
 typedef struct s_stack
 {
-	int             val;
-	struct s_stack  *next;
-}   t_stack;
-
-typedef struct s_bench
-{
-    int op_sa;
-    int op_sb;
-    int op_ss;
-    int op_pa;
-    int op_pb;
-    int op_ra;
-    int op_rb;
-    int op_rr;
-    int op_rra;
-    int op_rrb;
-    int op_rrr;
-    int total_ops;
-    float disorder;
-    int strategy;
-}   bench_mark;
+	int				val;
+	struct s_stack	*next;
+}	t_stack;
 
 int		ft_strcmp(char *s1, char *s2);
 char	**ft_split(char const *s, char c);
 char	*ft_strchr(const char *s, int c);
+void	*ft_memset(void *b, int c, size_t len);
+void	ft_bzero(void *s, size_t n);
 void	*ft_calloc(size_t nmemb, size_t size);
 int		set_strategy(t_flags *flags, char *arg);
 int		parse_flags(int argc, char **argv, t_flags *flags);
-int	parse_single_str(t_stack **stack, char *str);
+int		parse_single_str(t_stack **stack, char *str);
 t_stack	*parse_multiple(int argc, char **argv, int start, int *err);
 t_stack	*parse_args(int argc, char **argv, int start, int *err);
 
@@ -89,34 +85,38 @@ void	free_stack(t_stack **stack);
 void	free_tokens(char **tokens);
 int		stack_size(t_stack *a);
 
-void    sa(t_stack **a, t_flags *flags);
-void    sb(t_stack **b, t_flags *flags);
-void    ss(t_stack **a, t_stack **b, t_flags *flags);
-void    pa(t_stack **a, t_stack **b, t_flags *flags);
-void    pb(t_stack **a, t_stack **b, t_flags *flags);
-void    ra(t_stack **a, t_flags *flags);
-void    rb(t_stack **b, t_flags *flags);
-void    rr(t_stack **a, t_stack **b, t_flags *flags);
-void    rra(t_stack **a, t_flags *flags);
-void    rrb(t_stack **b, t_flags *flags);
-void    rrr(t_stack **a, t_stack **b, t_flags *flags);
-void    emit_op(t_flags *flags, const char *op, int len, int op_index);
+void	sa(t_stack **a, t_flags *flags);
+void	sb(t_stack **b, t_flags *flags);
+void	ss(t_stack **a, t_stack **b, t_flags *flags);
+void	pa(t_stack **a, t_stack **b, t_flags *flags);
+void	pb(t_stack **a, t_stack **b, t_flags *flags);
+void	ra(t_stack **a, t_flags *flags);
+void	rb(t_stack **b, t_flags *flags);
+void	rr(t_stack **a, t_stack **b, t_flags *flags);
+void	rra(t_stack **a, t_flags *flags);
+void	rrb(t_stack **b, t_flags *flags);
+void	rrr(t_stack **a, t_stack **b, t_flags *flags);
+void	emit_op(t_flags *flags, const char *op, int len, int op_index);
 
-void    sort_three(t_stack **a, t_flags *flags);
+void	sort_three(t_stack **a, t_flags *flags);
+void	sort_five(t_stack **a, t_stack **b, t_flags *flags);
+int		is_sorted(t_stack *stack);
 
-void    bubble_sort(t_stack **a, t_stack **b, t_flags *flags);
+void	bubble_sort(t_stack **a, t_stack **b, t_flags *flags);
 
-void    radix_sort(t_stack **a, t_stack **b, t_flags *flags);
-int     get_max_bits(int size);
-void    normalize(t_stack *a, int size);
+void	radix_sort(t_stack **a, t_stack **b, t_flags *flags);
+int		get_max_bits(int size);
+void	normalize(t_stack *a, int size);
 
-void    chunk_sort(t_stack **a, t_stack **b, t_flags *flags);
+void	chunk_sort(t_stack **a, t_stack **b, t_flags *flags);
 
-void    sort(t_stack **a, t_stack **b, t_flags *flags);
-void    sort2(t_stack **a, t_stack **b, t_flags *flags);
-float   compute_disorder(t_stack **a, t_flags *flags);
+void	sort(t_stack **a, t_stack **b, t_flags *flags);
+void	sort2(t_stack **a, t_stack **b, t_flags *flags);
+float	compute_disorder(t_stack **a);
 void	print_disorder(float disorder, t_flags *flags);
 void	dispatch_strategy(t_stack **a, t_stack **b, t_flags *flags, int size);
-void	handle_small_stack(t_stack **a, t_flags *flags, int size);
+void	handle_small_stack(t_stack **a, t_stack **b, t_flags *flags, int size);
+void	print_bench(t_flags *flags, float disorder);
+char	*strategy_print(t_flags *flags);
 
 #endif

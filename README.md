@@ -71,6 +71,8 @@ To compare the operation count of a given strategy on a larger, random input:
 
 ## Algorithms and Strategy Justification
 
+For this project, andmigue worked on the algorithm and operations, and mamendes worked on the parsing and flags, etc.
+
 Regardless of the strategy chosen, stacks of **2 to 5 elements** are always handled by dedicated routines instead of the general-purpose algorithms below, since hardcoding these small cases is cheaper and simpler than running a generic sort on them:
 
 - **size 2** — a single `sa` if the two values are inverted.

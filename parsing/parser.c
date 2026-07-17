@@ -6,7 +6,7 @@
 /*   By: andmigue <andmigue@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/11 17:53:11 by andmigue          #+#    #+#             */
-/*   Updated: 2026/07/17 17:59:46 by andmigue         ###   ########.fr       */
+/*   Updated: 2026/07/17 18:29:19 by andmigue         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,33 +63,21 @@ t_stack	*parse_multiple(int argc, char **argv, int start, int *err)
 	i = start;
 	while (i < argc)
 	{
-		if (!validate_and_push(&stack, argv[i++]))
+		if (!parse_single_str(&stack, argv[i]))
 		{
 			*err = 1;
 			free_stack(&stack);
 			return (NULL);
 		}
+		i++;
 	}
 	return (stack);
 }
 
 t_stack	*parse_args(int argc, char **argv, int start, int *err)
 {
-	t_stack	*stack;
-
 	*err = 0;
-	stack = NULL;
 	if (start >= argc)
 		return (NULL);
-	if (start == argc - 1 && ft_strchr(argv[start], ' '))
-	{
-		if (!parse_single_str(&stack, argv[start]))
-		{
-			*err = 1;
-			free_stack(&stack);
-			return (NULL);
-		}
-		return (stack);
-	}
 	return (parse_multiple(argc, argv, start, err));
 }

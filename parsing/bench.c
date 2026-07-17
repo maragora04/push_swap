@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   bench.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: andmigue <andmigue@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mamendes <mamendes@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/06 19:41:41 by mamendes          #+#    #+#             */
-/*   Updated: 2026/07/17 13:21:03 by andmigue         ###   ########.fr       */
+/*   Updated: 2026/07/17 16:35:26 by mamendes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,18 +21,20 @@ char	*strategy_print(t_flags *flags)
 		return ("Medium / O(n\xe2\x88\x9an)");
 	if (flags->strategy == COMPLEX)
 		return ("Complex / O(n log n)");
-	return ("Adaptive / O(n\xe2\x88\x9an)");
+	return ("Adaptive");
 }
 
 void	print_bench(t_flags *flags, float disorder)
 {
 	print_disorder(disorder, flags);
-	ft_printf("[bench] strategy: %s\n", strategy_print(flags));
-	ft_printf("[bench] total_ops: %d\n", flags->total_ops);
-	ft_printf("[bench] sa: %d sb: %d ss: %d pa: %d pb: %d\n",
+	ft_printf_fd(STDERR_FILENO, \
+"[bench] strategy: %s\n", strategy_print(flags));
+	ft_printf_fd(STDERR_FILENO, "[bench] total_ops: %d\n", flags->total_ops);
+	ft_printf_fd(STDERR_FILENO, "[bench] sa: %d sb: %d ss: %d pa: %d pb: %d\n",
 		flags->op_count[OP_SA], flags->op_count[OP_SB], flags->op_count[OP_SS],
 		flags->op_count[OP_PA], flags->op_count[OP_PB]);
-	ft_printf("[bench] ra: %d rb: %d rr: %d rra: %d rrb: %d rrr: %d\n",
+	ft_printf_fd(STDERR_FILENO, "[bench] ra: %d rb: %d rr: \
+%d rra: %d rrb: %d rrr: %d\n",
 		flags->op_count[OP_RA], flags->op_count[OP_RB], flags->op_count[OP_RR],
 		flags->op_count[OP_RRA], flags->op_count[OP_RRB],
 		flags->op_count[OP_RRR]);

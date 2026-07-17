@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: andmigue <andmigue@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mamendes <mamendes@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/29 16:00:19 by andmigue          #+#    #+#             */
-/*   Updated: 2026/07/17 13:34:58 by andmigue         ###   ########.fr       */
+/*   Updated: 2026/07/17 16:09:02 by mamendes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,3 +35,4 @@ int	main(int argc, char **argv)
 	free_stack(&b);
 	return (0);
 }
+/*shuf -i 0-500 -n 254 > arg ; ./push_swap $(cat arg)*/

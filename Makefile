@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: andmigue <andmigue@student.42.fr>          +#+  +:+       +#+         #
+#    By: mamendes <mamendes@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2026/06/11 17:49:02 by andmigue          #+#    #+#              #
-#    Updated: 2026/07/17 12:23:11 by andmigue         ###   ########.fr        #
+#    Updated: 2026/07/17 15:44:46 by mamendes         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -40,7 +40,7 @@ OBJS = $(SRC:.c=.o)
 PRINTF_DIR = ft_printf
 PRINTF_LIB = $(PRINTF_DIR)/libftprintf.a
 
-CFLAGS = -Wall -Wextra -Werror -I. -I$(PRINTF_DIR)
+CFLAGS = -g -Wall -Wextra -Werror -I. -I$(PRINTF_DIR)
 
 all: $(NAME)
 

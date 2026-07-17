@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   disorder.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: andmigue <andmigue@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mamendes <mamendes@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/30 16:05:11 by andmigue          #+#    #+#             */
-/*   Updated: 2026/07/17 13:34:04 by andmigue         ###   ########.fr       */
+/*   Updated: 2026/07/17 16:36:13 by mamendes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,9 @@ void	print_disorder(float disorder, t_flags *flags)
 		unit++;
 	}
 	if (decimal < 10)
-		ft_printf("[bench] disorder: %d.0%d%%\n", unit, decimal);
+		ft_printf_fd(STDERR_FILENO, \
+"[bench] disorder: %d.0%d%%\n", unit, decimal);
 	else
-		ft_printf("[bench] disorder: %d.%d%%\n", unit, decimal);
+		ft_printf_fd(STDERR_FILENO, \
+"[bench] disorder: %d.%d%%\n", unit, decimal);
 }

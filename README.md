@@ -10,7 +10,7 @@ The program takes an unsorted list of unique integers as arguments, loads them o
 
 Beyond the mandatory behavior, this implementation adds:
 - A **strategy selector** (`--simple`, `--medium`, `--complex`, `--adaptive`) that lets the caller force a specific sorting algorithm, or let the program pick one automatically based on how disordered the input is.
-- A **`--bench` mode** that suppresses the operation output and instead prints statistics (disorder percentage, strategy used, and a per-operation breakdown) — used to compare algorithm performance across different input sizes and shapes.
+- A **`--bench` mode** that prints the operation output and prints statistics (disorder percentage, strategy used, and a per-operation breakdown) — used to compare algorithm performance across different input sizes and shapes.
 
 ## Instructions
 
@@ -50,7 +50,7 @@ Flags (all optional, must come before the numbers):
 | `--simple` | Force bubble sort |
 | `--medium` | Force chunk (bucket) sort |
 | `--complex` | Force radix sort |
-| `--bench` | Print statistics instead of the operation list |
+| `--bench` | Print statistics and the operation list |
 
 Any invalid input — non-integer tokens, values outside the `int` range, or duplicate numbers — makes the program print `Error` to standard error and exit with status `1`, without printing any operations. If the input is empty or already sorted, no operations are printed.
 

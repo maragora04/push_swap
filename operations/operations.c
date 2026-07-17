@@ -22,8 +22,7 @@ void	emit_op(t_flags *flags, const char *op, int len, int op_index)
 		flags->op_count[op_index]++;
 		flags->total_ops++;
 	}
-	if (!flags->bench)
-		write(1, op, len);
+	write(1, op, len);
 }
 
 static void	swap(t_stack **stack)

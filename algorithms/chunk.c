@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   chunk.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mamendes <mamendes@student.42.fr>          +#+  +:+       +#+        */
+/*   By: andmigue <andmigue@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/15 18:45:12 by andmigue          #+#    #+#             */
-/*   Updated: 2026/07/17 16:45:57 by mamendes         ###   ########.fr       */
+/*   Updated: 2026/07/17 18:00:11 by andmigue         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,22 +24,16 @@ static int	sqrt_chunk(int size)
 }
 
 static void	push_chunk_to_b(t_stack **a, t_stack **b,
-							int chunk_n, t_flags *flags)
+				t_range r, t_flags *flags)
 {
 	int	size;
 	int	i;
-	int	min;
-	int	max;
 
 	size = stack_size(*a);
-	min = chunk_n * sqrt_chunk(size);
-	max = min + sqrt_chunk(size) - 1;
-	if (max >= size)
-		max = size - 1;
 	i = 0;
 	while (i < size)
 	{
-		if ((*a)->val >= min && (*a)->val <= max)
+		if ((*a)->val >= r.min && (*a)->val <= r.max)
 			pb(a, b, flags);
 		else
 			ra(a, flags);
@@ -93,15 +87,20 @@ static void	pull_b_to_a(t_stack **a, t_stack **b, t_flags *flags)
 
 void	chunk_sort(t_stack **a, t_stack **b, t_flags *flags)
 {
-	int	size;
-	int	chunk_n;
+	int		size;
+	int		chunk_size;
+	t_range	r;
 
 	size = stack_size(*a);
-	chunk_n = 0;
-	while (chunk_n * sqrt_chunk(size) < size)
+	chunk_size = sqrt_chunk(size);
+	r.min = 0;
+	while (r.min < size)
 	{
-		push_chunk_to_b(a, b, chunk_n, flags);
-		chunk_n++;
+		r.max = r.min + chunk_size - 1;
+		if (r.max >= size)
+			r.max = size - 1;
+		push_chunk_to_b(a, b, r, flags);
+		r.min += chunk_size;
 	}
 	pull_b_to_a(a, b, flags);
 }

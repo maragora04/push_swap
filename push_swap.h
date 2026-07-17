@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mamendes <mamendes@student.42.fr>          +#+  +:+       +#+        */
+/*   By: andmigue <andmigue@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/06 20:57:10 by mamendes          #+#    #+#             */
-/*   Updated: 2026/07/17 16:45:18 by mamendes         ###   ########.fr       */
+/*   Updated: 2026/07/17 18:00:32 by andmigue         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,6 @@
 # define SIMPLE 1
 # define MEDIUM 2
 # define COMPLEX 3
-//# define COUNT 4
 
 # include <stdlib.h>
 # include <stdio.h>
@@ -56,6 +55,12 @@ typedef struct s_flags
 	int	op_rrr;
 	int	total_ops;
 }	t_flags;
+
+typedef struct s_range
+{
+	int	min;
+	int	max;
+}	t_range;
 
 typedef struct s_stack
 {
